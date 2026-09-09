@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellbeing Signal — Mental Health Estimator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="site-header">
+    <span class="wordmark">Wellbeing&nbsp;Signal</span>
+    <span class="tagline">a quiet read on how your habits are landing</span>
+  </header>
+
+  <main class="layout">
+
+    <!-- Intro column -->
+    <section class="intro">
+      <h1>How are your days<br>actually adding up?</h1>
+      <p>
+        Answer a few honest questions about sleep, study, screens and
+        stress. We'll estimate where things stand right now — not a
+        diagnosis, just a signal worth paying attention to.
+      </p>
+
+      <svg class="wave-art" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="wave wave-1" d="M0 130 C 40 100, 80 160, 120 130 C 160 100, 200 160, 240 130 C 270 108, 300 140, 320 128" stroke="var(--accent-soft)" stroke-width="10" stroke-linecap="round"/>
+        <path class="wave wave-2" d="M0 150 C 45 175, 85 120, 130 150 C 170 178, 210 118, 250 150 C 275 168, 300 138, 320 152" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+        <circle class="wave-dot" cx="250" cy="150" r="6" fill="var(--accent-dark)"/>
+      </svg>
+
+      <p class="disclaimer">
+        This tool offers an estimate from a statistical model. It is not a
+        substitute for professional care. If you're struggling, please
+        talk to someone you trust or a mental health professional.
+      </p>
+    </section>
+
+    <!-- Form / result card -->
+    <section class="card" id="card">
+
+      <form id="predict-form" class="form" novalidate>
+
+        <div class="field-group">
+          <p class="group-label">About you</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" min="10" max="100" step="1" required>
+            </div>
+            <div class="field">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Choose one</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="country">Country</label>
+              <input type="text" id="country" name="country" placeholder="e.g. India" required>
+            </div>
+            <div class="field">
+              <label for="academic_level">Academic level</label>
+              <select id="academic_level" name="academic_level" required>
+                <option value="" disabled selected>Choose one</option>
+                <option value="High School">High school</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <p class="group-label">Screen habits</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="most_used_platform">Most used platform</label>
+              <select id="most_used_platform" name="most_used_platform" required>
+                <option value="" disabled selected>Choose one</option>
+                <option>Facebook</option>
+                <option>LinkedIn</option>
+                <option>Instagram</option>
+                <option>Snapchat</option>
+                <option>Twitter</option>
+                <option>YouTube</option>
+                <option>TikTok</option>
+                <option>LINE</option>
+                <option>KakaoTalk</option>
+                <option>VKontakte</option>
+                <option>WhatsApp</option>
+                <option>WeChat</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="purpose_of_use">Mainly used for</label>
+              <select id="purpose_of_use" name="purpose_of_use" required>
+                <option value="" disabled selected>Choose one</option>
+                <option>Networking</option>
+                <option>Education</option>
+                <option>Entertainment</option>
+                <option>News</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="avg_daily_usage_hours">Daily usage <span class="unit">(hours)</span></label>
+              <input type="number" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1" required>
+            </div>
+            <div class="field">
+              <label for="daily_unlocks">Phone unlocks <span class="unit">(per day)</span></label>
+              <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" step="1" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <p class="group-label">Daily rhythm</p>
+          <div class="field-row three">
+            <div class="field">
+              <label for="study_hours">Study <span class="unit">(hrs)</span></label>
+              <input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" required>
+            </div>
+            <div class="field">
+              <label for="physical_activity_hours">Activity <span class="unit">(hrs)</span></label>
+              <input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.1" required>
+            </div>
+            <div class="field">
+              <label for="sleep_hours_per_night">Sleep <span class="unit">(hrs)</span></label>
+              <input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.1" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="stress_level">Stress level lately</label>
+            <select id="stress_level" name="stress_level" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Very High">Very high</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="form-error" class="form-error" role="alert" hidden></div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span class="btn-label">Get my estimate</span>
+        </button>
+
+      </form>
+
+      <!-- Loading state -->
+      <div class="loading-state" id="loading-state" hidden>
+        <div class="pulse-dot"></div>
+        <p>Reading your answers…</p>
+      </div>
+
+      <!-- Result state -->
+      <div class="result-state" id="result-state" hidden>
+        <svg class="gauge" viewBox="0 0 200 120" aria-hidden="true">
+          <path class="gauge-track" d="M20 110 A 80 80 0 0 1 180 110" fill="none" stroke-width="14" stroke-linecap="round"/>
+          <path class="gauge-fill" id="gauge-fill" d="M20 110 A 80 80 0 0 1 180 110" fill="none" stroke-width="14" stroke-linecap="round"/>
+        </svg>
+        <div class="gauge-readout">
+          <span class="gauge-score" id="gauge-score">0.0</span>
+          <span class="gauge-max">/ 10</span>
+        </div>
+        <p class="gauge-band" id="gauge-band"></p>
+        <p class="gauge-note" id="gauge-note"></p>
+        <button type="button" class="secondary-btn" id="reset-btn">Check another set of answers</button>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
